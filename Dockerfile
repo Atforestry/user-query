@@ -1,14 +1,17 @@
-FROM python:3
+FROM node:lts-alpine
 
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN npm i @vue/cli-service
 
-COPY ./src ./src
-COPY ./start.sh .
+COPY ./app/package.json .
+COPY ./app/vue.config.js .
+COPY ./app/jsconfig.json .
+COPY ./app/babel.config.js .
+COPY ./app/yarn.lock .
+COPY ./app/src ./src
+RUN npm install
 
-EXPOSE 8000
+EXPOSE 8080
 
-CMD ["./start.sh"]
+CMD ["npm", "run", "serve"]

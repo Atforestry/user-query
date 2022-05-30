@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2>Search and add a pin</h2>
+      <h2>Atforestry</h2>
     </div>
     <br>
     <GmapMap
