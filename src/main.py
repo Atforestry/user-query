@@ -1,28 +1,11 @@
-import sys
-sys.path.insert(1, './src')
+import streamlit as st
+from streamlit_folium import st_folium
+import folium
 
-from fastapi import FastAPI, status
-from fastapi.responses import HTMLResponse
+st.title('Atforestry (beta)')
+st.markdown('Atforestry is a web application for the analysis of forest data and deforestation. It is currently in beta and is not ready for production.')
+st.markdown('Select the area in the map to start the analysis.')
 
-import logging
-from logging.config import dictConfig
-from log_config import log_config 
-
-dictConfig(log_config)
-logger = logging.getLogger("capstone") # should be this name unless you change it in log_config.py
-
-app = FastAPI()
-
-@app.get('/healthcheck', status_code=status.HTTP_200_OK)
-def perform_healthcheck():
-    logger.info('Healthcheck ok')
-    return {'healthcheck': 'Ok'}
-
-@app.get("/")
-async def main():
-    content = """
-<body>
-<p>Hello World !</p>
-</body>
-    """
-    return HTMLResponse(content=content)
+m = folium.Map(min_zoom = 6, max_zoom = 6)
+m.fit_bounds([[-53,-4],[-52,-3]])
+st_data = st_folium(m, width = 725)

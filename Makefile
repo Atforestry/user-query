@@ -1,11 +1,7 @@
 include .env
 
-build:
-	docker build . -t atforestry/$(IMAGE_NAME)
-
 run:
-	docker-compose up -d --build
-	docker-compose logs -f --tail=20
+	streamlit run src/main.py
 
 stop:
 	docker-compose down
