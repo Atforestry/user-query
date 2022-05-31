@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import VueGoogleMaps from '@fawmi/vue-google-maps'
-
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
@@ -11,5 +12,4 @@ app.use(VueGoogleMaps, {
       key: process.env.VUE_APP_GOOGLE_MAPS_KEY,
   },
 }).mount('#app')
-
-console.log(`GOOGLE MAPS KEY ${process.env.VUE_APP_GOOGLE_MAPS_KEY}`)
+app.use(VueAxios, axios)

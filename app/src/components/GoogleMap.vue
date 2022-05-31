@@ -1,35 +1,29 @@
 <template>
-  <div class="container-fluid mt-5">
-    <div>
-      <h2>Atforestry</h2>
-    </div>
-    <br>
-    <GMapMap
-      ref="mapRef"
-      :center='center'
-      :zoom='12'
-      :draggable="false"
-      :options="{
-        zoomControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-        disableDefaultUi: true
-      }"
-      style='width:100%;  height: 400px;'
-      map-type-id="satellite"
-      max-zoom="12"
-      min-zoom="12"
-    >
-      <GMapPolygon
-          :paths="paths"
-          @click="clickOnMap"
-          :options="optionsPolygon"
-      />
-    </GMapMap>    
-  </div>
+  <GMapMap
+    ref="mapRef"
+    :center='center'
+    :zoom='12'
+    :draggable="false"
+    :options="{
+      zoomControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false,
+      rotateControl: false,
+      fullscreenControl: false,
+      disableDefaultUi: true
+    }"
+    style='width:100%;  height: 375px;'
+    map-type-id="satellite"
+    max-zoom="12"
+    min-zoom="12"
+  >
+    <GMapPolygon
+        :paths="paths"
+        @click="clickOnMap"
+        :options="optionsPolygon"
+    />
+  </GMapMap>    
 </template>
 
 <script>
