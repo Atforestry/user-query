@@ -1,11 +1,11 @@
-# boilerplate template
-This is the footprint we can use to start any service based on python from. It's optional but will save us a lot of time.
-
+# User-Query Module
+This is the front-end module. It's developed in VueJS 3. 
 # Instructions
 * This template is created as a template. Selected this template when creating a new repository.
-* Edit the .env file and adjust variables accordingly
-* Create a Python environment locally and install only the necessary libraries to keep the image as small as possible.
-* Review Dockerfile to select the most appropriate image. Now we are using Python:3 (pretty slim!)
+* Edit the .env file and adjust variables accordingly. You have to include the following variables:
+- VUE_APP_GOOGLE_MAPS_KEY (it includes the GOOGLE MAPS KEY that you have to generate)
+- API_URL (Url of the service to call with lat lang and get a prediction)
+* Review Dockerfile to select the most appropriate image. Now we are using node:lts-alpine 
 * Use make <COMMAND> to work with this repository:
 
 ```

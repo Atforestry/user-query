@@ -10,8 +10,9 @@ COPY ./app/jsconfig.json .
 COPY ./app/babel.config.js .
 COPY ./app/yarn.lock .
 COPY ./app/src ./src
+COPY ./.env .
 RUN npm install
 
 EXPOSE 8080
 
-CMD ["npm", "run", "serve"]
+CMD ["yarn", "serve"]

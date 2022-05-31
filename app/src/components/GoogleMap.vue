@@ -4,11 +4,11 @@
       <h2>Atforestry</h2>
     </div>
     <br>
-    <GmapMap
+    <GMapMap
       ref="mapRef"
       :center='center'
       :zoom='12'
-       :options="{
+      :options="{
         zoomControl: false,
         mapTypeControl: false,
         scaleControl: false,
@@ -17,8 +17,9 @@
         fullscreenControl: false,
         disableDefaultUi: true
       }"
-      style='width:100%;  height: 400px;'
       @click="clickOnMap"
+      style='width:100%;  height: 400px;'
+      map-type-id="terrain"
     />    
   </div>
 </template>

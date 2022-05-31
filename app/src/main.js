@@ -1,15 +1,12 @@
-import Vue from 'vue'
-import * as VueGoogleMaps from 'vue2-google-maps'
+import { createApp } from 'vue'
 import App from './App.vue'
+import VueGoogleMaps from '@fawmi/vue-google-maps'
 
-Vue.config.productionTip = false
-
-Vue.use(VueGoogleMaps, {
+const app = createApp(App)
+app.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyC_8Itm1gZjpl7-6guyIomDCuIqptqY4M4',
-  }
-});
+      key: process.env.VUE_APP_GOOGLE_MAPS_KEY,
+  },
+}).mount('#app')
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+console.log(`GOOGLE MAPS KEY ${process.env.VUE_APP_GOOGLE_MAPS_KEY}`)
