@@ -23,7 +23,7 @@
         @click="clickOnMap"
         :options="optionsPolygon"
     />
-  </GMapMap>    
+  </GMapMap> 
 </template>
 
 <script>
@@ -37,7 +37,18 @@ export default {
     clickOnMap(e) {
       let lat = e.latLng.lat()
       let lng  = e.latLng.lng()
-      alert(`lat: ${lat}, lng: ${lng}`)
+      let apiurl = `http://${process.env.VUE_APP_API_URL}/v1/is-deforested`
+
+      this.axios.get(apiurl,
+      { params: {
+        lat: lat,
+        lng: lng
+      }}).then((response) => {
+        console.log(response.data)
+      }).catch((error) => {
+        this.$emit("onError", error)
+      })
+
     }
   },
   data() {

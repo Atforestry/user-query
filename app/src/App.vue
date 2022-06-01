@@ -10,7 +10,7 @@
       <div class="row"><div class="col-12">&nbsp;</div></div>
       <div class="row">
         <div class="col-8">
-          <GoogleMap />
+          <GoogleMap @onError="errorMesage"/>
         </div>
         <div class="col-4">
           <div class="card">
@@ -52,8 +52,19 @@ import GoogleMap from './components/GoogleMap.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      errorMessage: '',
+    }
+  },
   components: {
     GoogleMap
+  },
+  methods: { 
+    errorMesage(error) {
+      this.errorMessage = error
+      alert(error)
+    }
   }
 }
 </script>
