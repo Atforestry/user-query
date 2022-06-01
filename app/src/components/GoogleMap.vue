@@ -2,7 +2,7 @@
   <GMapMap
     ref="mapRef"
     :center='center'
-    :zoom='12'
+    :zoom='8'
     :draggable="false"
     :options="{
       zoomControl: false,
@@ -15,8 +15,8 @@
     }"
     style='width:100%;  height: 375px;'
     map-type-id="satellite"
-    max-zoom="12"
-    min-zoom="12"
+    max-zoom="8"
+    min-zoom="8"
   >
     <GMapPolygon
         :paths="paths"
@@ -42,13 +42,14 @@ export default {
   },
   data() {
     return {
-      center: { lat: 41.38, lng: 2.16 },
+      center: { lng: -52.5, lat: -3.5 },
       paths: [
-        { lat: 41.3819, lng: 2.0752 },
-        { lat: 41.4398, lng: 2.1641 },
-        { lat: 41.4169, lng: 2.2352 },
-        { lat: 41.3195, lng: 2.1471 },
-        { lat: 41.3819, lng: 2.0752 }
+        // -53,-4,-52,-3
+        { lng: -53, lat: -4 },
+        { lng: -53, lat: -3 },
+        { lng: -52, lat: -3 },
+        { lng: -52, lat: -4 },
+        { lng: -53, lat: -4 }
       ],
       optionsPolygon: {
         strokeColor: "#FF0000",

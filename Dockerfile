@@ -14,6 +14,6 @@ COPY ./app/yarn.lock .
 COPY ./app/src ./src
 COPY ./.env .
 
-EXPOSE 8080
+EXPOSE 8000
 
-CMD ["yarn", "serve"]
+CMD ["yarn", "serve", "--port", "8000"]
