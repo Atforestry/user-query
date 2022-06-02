@@ -10,7 +10,15 @@
       <div class="row"><div class="col-12">&nbsp;</div></div>
       <div class="row">
         <div class="col-8">
-          <GoogleMap @onError="errorMesage"/>
+          <GoogleMap @onError="errorMesage" @onClick="clickOnMap"/>
+          <p></p>
+          <b-alert
+            dismissible
+            variant="danger"
+            v-model="showDismissibleAlert" 
+          >
+            {{ errorMessage }}
+          </b-alert>
         </div>
         <div class="col-4">
           <div class="card">
@@ -55,6 +63,7 @@ export default {
   data() {
     return {
       errorMessage: '',
+      showDismissibleAlert: false
     }
   },
   components: {
@@ -63,7 +72,10 @@ export default {
   methods: { 
     errorMesage(error) {
       this.errorMessage = error
-      alert(error)
+      this.showDismissibleAlert = true
+    },
+    clickOnMap() {
+      this.showDismissibleAlert = false
     }
   }
 }

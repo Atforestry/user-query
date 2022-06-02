@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     clickOnMap(e) {
+      this.$emit('onClick', e)
       let lat = e.latLng.lat()
       let lng  = e.latLng.lng()
       let apiurl = `http://${process.env.VUE_APP_API_URL}/v1/is-deforested`
