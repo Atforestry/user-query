@@ -15,8 +15,8 @@ env:
   ARTIFACT_REPO: atforestry-repo
   GKE_CLUSTER: atforestry-cluster    # Add your cluster name here.
   GCP_ZONE: us-central1   # Add your cluster zone here.
-  DEPLOYMENT_NAME: api # Add your deployment name here.
-  IMAGE_NAME: api
+  DEPLOYMENT_NAME: user-query # Add your deployment name here.
+  IMAGE_NAME: user-query
 
 jobs:
   setup-build-publish-deploy:
