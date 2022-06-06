@@ -71,7 +71,12 @@ export default {
   },
   methods: { 
     errorMesage(error) {
-      this.errorMessage = error
+      const errorCode = error.response.status
+      if (errorCode === 404) {
+        this.errorMessage = 'No data found for this location.'
+      } else {
+        this.errorMessage = 'An error occurred.'
+      }
       this.showDismissibleAlert = true
     },
     clickOnMap() {
