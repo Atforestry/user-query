@@ -1,19 +1,24 @@
-FROM node:lts-alpine
+# server environment
+FROM nginx:alpine
 
-WORKDIR /usr/src/app
+ARG VUE_APP_API_URL=api:8030
+ARG VUE_APP_GOOGLE_MAPS_KEY=AIzaSyC_8Itm1gZjpl7-6guyIomDCuIqptqY4M4
 
-RUN npm i @vue/cli-service
+ENV VUE_APP_API_URL $VUE_APP_API_URL
+ENV VUE_APP_GOOGLE_MAPS_KEY $VUE_APP_GOOGLE_MAPS_KEY
 
-COPY ./app/package.json .
-RUN npm install
+WORKDIR /app
+COPY app/ ./
 
-COPY ./app/vue.config.js .
-COPY ./app/jsconfig.json .
-COPY ./app/babel.config.js .
-COPY ./app/yarn.lock .
-COPY ./app/src ./src
-COPY ./.env .
+RUN apk add nodejs npm
+RUN npm install -g yarn
+RUN yarn
+RUN yarn build
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN cp -R /app/dist /usr/share/nginx/html
+COPY start.sh ./
 
 EXPOSE 8000
+CMD ["/app/start.sh"]
 
-CMD ["yarn", "serve", "--port", "8000"]
