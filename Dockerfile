@@ -1,7 +1,7 @@
 # server environment
 FROM nginx:alpine
 
-ARG VUE_APP_API_URL=api:8030
+ARG VUE_APP_API_URL=localhost:8030
 ARG VUE_APP_GOOGLE_MAPS_KEY=AIzaSyC_8Itm1gZjpl7-6guyIomDCuIqptqY4M4
 
 ENV VUE_APP_API_URL $VUE_APP_API_URL
