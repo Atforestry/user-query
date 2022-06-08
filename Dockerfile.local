@@ -1,0 +1,13 @@
+# server environment
+FROM nginx:alpine
+
+WORKDIR /app
+COPY app/ ./
+
+RUN apk add nodejs npm
+RUN npm install -g yarn
+RUN yarn
+
+EXPOSE 8000
+CMD ["yarn", "serve", "--port", "8000"]
+

@@ -1,7 +1,7 @@
 export IMAGE_NAME=query-user
 
 build:
-	docker build . -t atforestry/$(IMAGE_NAME)
+	docker build -f ./Dockerfile.local -t atforestry/$(IMAGE_NAME) .
 	
 run start:
 	docker-compose up -d --build

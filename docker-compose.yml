@@ -1,9 +1,14 @@
 version: "3.9"
 services:
   service:
-    build: .
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile.local
     image: "atforestry/${IMAGE_NAME}"
     ports:
       - "8000:8000" 
     volumes:
       - ./app/src:/usr/src/app/src
+    env_file:
+      - .env
+    
