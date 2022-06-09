@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     clickOnMap(e) {
-      this.$emit('onClick', e)
       let lat = e.latLng.lat()
       let lng  = e.latLng.lng()
       let apiurl = `http://${process.env.VUE_APP_API_URL}/v1/is-deforested`
@@ -45,7 +44,12 @@ export default {
         lat: lat,
         lng: lng
       }}).then((response) => {
-        console.log(response.data)
+        this.$emit('onClick', {
+          isDeforested: response.data.deforestation,
+          imagePast: response.data.imagePast,
+          imagePresent: response.data.imagePresent
+        })
+
       }).catch((error) => {
         this.$emit("onError", error)
       })

@@ -1,13 +1,16 @@
-# server environment
-FROM nginx:alpine
+FROM node:lts-alpine
 
-WORKDIR /app
-COPY app/ ./
+WORKDIR /usr/src/app
 
-RUN apk add nodejs npm
-RUN npm install -g yarn
-RUN yarn
+RUN npm i @vue/cli-service
 
-EXPOSE 8000
-CMD ["yarn", "serve", "--port", "8000"]
+COPY ./app/package.json .
+COPY ./app/vue.config.js .
+COPY ./app/jsconfig.json .
+COPY ./app/babel.config.js .
+COPY ./app/src ./src
+RUN npm install
 
+EXPOSE 8080
+
+CMD ["yarn", "serve", "--port", "8080"]

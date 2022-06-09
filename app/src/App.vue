@@ -32,18 +32,18 @@
               <div class="row"><div class="col-12">&nbsp;</div></div>
               <div class="row">
                 <div class="col-6 text-center">
-                  <img src="./assets/placeholder-image.jpeg" width="100%" class="border" />
-                  <div class="p-1 border bg-light">Date</div>
+                  <img :src="getImagePast" width="150" height="150" class="border" />
+                  <div class="p-1 border bg-light" width="150">Date</div>
                 </div>
                 <div class="col-6 text-center">
-                  <img src="./assets/placeholder-image.jpeg" width="100%" class="border" />                  
-                  <div class="p-1 border bg-light">Date</div>
+                  <img :src="getImagePresent" width="150" height="150" class="border" />                  
+                  <div class="p-1 border bg-light" width="150">Date</div>
                 </div>
               </div>
               <div class="row"><div class="col-12">&nbsp;</div></div>
               <div class="row">
                 <div class="col-12">
-                    <div class="p-3 border bg-light">Prediction result.</div>
+                    <div class="p-3 border bg-light">{{ result }}</div>
                 </div>
               </div>
             </div>
@@ -63,11 +63,26 @@ export default {
   data() {
     return {
       errorMessage: '',
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
+      result: 'Prediction result',
+      imagePast: null,
+      imagePresent: null
     }
   },
   components: {
     GoogleMap
+  },
+  computed: {
+    getImagePast() {
+      return this.imagePast
+    },
+    getImagePresent() {
+      return this.imagePresent
+    }
+  },
+  mounted() {
+    this.imagePast = 'https://storage.googleapis.com/atforestry-model-tracker/frontend/placeholder-image.jpeg'
+    this.imagePresent = 'https://storage.googleapis.com/atforestry-model-tracker/frontend/placeholder-image.jpeg'
   },
   methods: { 
     errorMesage(error) {
@@ -79,7 +94,10 @@ export default {
       }
       this.showDismissibleAlert = true
     },
-    clickOnMap() {
+    clickOnMap(event) {
+      this.result = (event.isDeforested) ? 'Deforestation' : 'No deforestation'
+      this.imagePast = event.imagePast
+      this.imagePresent = event.imagePresent
       this.showDismissibleAlert = false
     }
   }
