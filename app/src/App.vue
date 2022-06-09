@@ -32,12 +32,12 @@
               <div class="row"><div class="col-12">&nbsp;</div></div>
               <div class="row">
                 <div class="col-6 text-center">
-                  <img :src="getImagePast" width="150" height="150" class="border" />
-                  <div class="p-1 border bg-light" width="150">Date</div>
+                  <img :src="getImagePast" width="150" height="125" class="border" />
+                  <div class="p-1 border bg-light" width="150">{{datePredictionPast}}</div>
                 </div>
                 <div class="col-6 text-center">
-                  <img :src="getImagePresent" width="150" height="150" class="border" />                  
-                  <div class="p-1 border bg-light" width="150">Date</div>
+                  <img :src="getImagePresent" width="150" height="125" class="border" />                  
+                  <div class="p-1 border bg-light" width="150">{{datePredictionPresent}}</div>
                 </div>
               </div>
               <div class="row"><div class="col-12">&nbsp;</div></div>
@@ -66,7 +66,9 @@ export default {
       showDismissibleAlert: false,
       result: 'Prediction result',
       imagePast: null,
-      imagePresent: null
+      imagePresent: null,
+      datePredictionPast: 'Date',
+      datePredictionPresent: 'Date'
     }
   },
   components: {
@@ -95,10 +97,13 @@ export default {
       this.showDismissibleAlert = true
     },
     clickOnMap(event) {
+      console.log(event)
       this.result = (event.isDeforested) ? 'Deforestation' : 'No deforestation'
       this.imagePast = event.imagePast
       this.imagePresent = event.imagePresent
       this.showDismissibleAlert = false
+      this.datePredictionPast = event.datePredictionPast
+      this.datePredictionPresent = event.datePredictionPresent
     }
   }
 }

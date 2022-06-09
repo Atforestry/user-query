@@ -47,7 +47,9 @@ export default {
         this.$emit('onClick', {
           isDeforested: response.data.deforestation,
           imagePast: response.data.imagePast,
-          imagePresent: response.data.imagePresent
+          imagePresent: response.data.imagePresent,
+          datePredictionPast: response.data.datePredictionPast,
+          datePredictionPresent: response.data.datePredictionPresent
         })
 
       }).catch((error) => {
