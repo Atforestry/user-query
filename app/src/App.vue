@@ -4,7 +4,7 @@
       <div class="row"><div class="col-12">&nbsp;</div></div>
       <div class="row">
         <div class="col-12">
-          <img src="./assets/Atforestry_logo.png" height="100"/>
+          <img src="./assets/atforestry-logo.png" height="100"/>
         </div>
       </div>
       <div class="row"><div class="col-12">&nbsp;</div></div>
