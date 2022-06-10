@@ -43,7 +43,7 @@
               <div class="row"><div class="col-12">&nbsp;</div></div>
               <div class="row">
                 <div class="col-12">
-                    <div class="p-3 border bg-light">{{ result }}</div>
+                    <div :class="{isDeforested: isDeforested}" class="p-3 border bg-light">{{ result }}</div>
                 </div>
               </div>
             </div>
@@ -68,7 +68,8 @@ export default {
       imagePast: null,
       imagePresent: null,
       datePredictionPast: 'Date',
-      datePredictionPresent: 'Date'
+      datePredictionPresent: 'Date',
+      isDeforestation: false
     }
   },
   components: {
@@ -99,6 +100,7 @@ export default {
     clickOnMap(event) {
       console.log(event)
       this.result = (event.isDeforested) ? 'Deforestation' : 'No deforestation'
+      this.isDeforested = event.isDeforested
       this.imagePast = event.imagePast
       this.imagePresent = event.imagePresent
       this.showDismissibleAlert = false
@@ -108,3 +110,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.isDeforested{
+    color: red;
+}
+
+</style>
