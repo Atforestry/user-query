@@ -39,6 +39,12 @@ export default {
       let lng  = e.latLng.lng()
       let apiurl = `http://${process.env.VUE_APP_API_URL}/v1/is-deforested`
 
+      if (this.demoIndex < 2) {
+        lat = this.demoPoints[this.demoIndex].lat
+        lng = this.demoPoints[this.demoIndex].lng
+        this.demoIndex++
+      }
+
       this.axios.get(apiurl,
       { params: {
         lat: lat,
@@ -61,6 +67,17 @@ export default {
   data() {
     return {
       center: { lng: -52.5, lat: -3.5 },
+      demoIndex: 0,
+      demoPoints: [
+        {
+          lat: -3.5222672296528335,
+          lng: -52.60829050093891
+        },
+        {
+          lat: -3.7793200271731093,
+          lng: -52.156066857619194
+        }
+      ],
       paths: [
         // -53,-4,-52,-3
         { lng: -53, lat: -4 },

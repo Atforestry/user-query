@@ -33,11 +33,11 @@
               <div class="row">
                 <div class="col-6 text-center">
                   <img :src="getImagePast" width="150" height="125" class="border" />
-                  <div class="p-1 border bg-light" width="150">{{datePredictionPast}}</div>
+                  <div class="p-1 border bg-light" style="min-width: 100%">{{datePredictionPast}}</div>
                 </div>
                 <div class="col-6 text-center">
                   <img :src="getImagePresent" width="150" height="125" class="border" />                  
-                  <div class="p-1 border bg-light" width="150">{{datePredictionPresent}}</div>
+                  <div class="p-1 border bg-light" style="min-width: 100%">{{datePredictionPresent}}</div>
                 </div>
               </div>
               <div class="row"><div class="col-12">&nbsp;</div></div>
