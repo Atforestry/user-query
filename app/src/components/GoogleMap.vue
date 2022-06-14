@@ -45,6 +45,8 @@ export default {
         this.demoIndex++
       }
 
+      this.$emit('onLoading')
+
       this.axios.get(apiurl,
       { params: {
         lat: lat,

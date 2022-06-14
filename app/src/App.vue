@@ -10,7 +10,7 @@
       <div class="row"><div class="col-12">&nbsp;</div></div>
       <div class="row">
         <div class="col-8">
-          <GoogleMap @onError="errorMesage" @onClick="clickOnMap"/>
+          <GoogleMap @onError="errorMesage" @onClick="clickOnMap" @onLoading="onLoading"/>
           <p></p>
           <b-alert
             dismissible
@@ -18,6 +18,13 @@
             v-model="showDismissibleAlert" 
           >
             {{ errorMessage }}
+          </b-alert>
+          <b-alert
+            dismissible
+            variant="primary"
+            v-model="showLoading" 
+          >
+           Loading...
           </b-alert>
         </div>
         <div class="col-4">
@@ -64,6 +71,7 @@ export default {
     return {
       errorMessage: '',
       showDismissibleAlert: false,
+      showLoading: false,
       result: 'Prediction result',
       imagePast: null,
       imagePresent: null,
@@ -89,6 +97,7 @@ export default {
   },
   methods: { 
     errorMesage(error) {
+      this.showLoading = false
       const errorCode = error.response.status
       if (errorCode === 404) {
         this.errorMessage = 'No data found for this location.'
@@ -98,7 +107,7 @@ export default {
       this.showDismissibleAlert = true
     },
     clickOnMap(event) {
-      console.log(event)
+      this.showLoading = false
       this.result = (event.isDeforested) ? 'Deforestation' : 'No deforestation'
       this.isDeforested = event.isDeforested
       this.imagePast = event.imagePast
@@ -106,6 +115,9 @@ export default {
       this.showDismissibleAlert = false
       this.datePredictionPast = event.datePredictionPast
       this.datePredictionPresent = event.datePredictionPresent
+    },
+    onLoading() {
+      this.showLoading = true
     }
   }
 }

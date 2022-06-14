@@ -9,7 +9,7 @@ on:
     - main
 
 env: 
-  VUE_APP_API_URL: "34.136.227.217"
+  VUE_APP_API_URL: "api.atforestry.com"
   VUE_APP_GOOGLE_MAPS_KEY: ${{ secrets.VUE_APP_GOOGLE_MAPS_KEY }}
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   ARTIFACT_REPO: atforestry-repo
