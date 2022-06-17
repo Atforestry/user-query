@@ -39,7 +39,7 @@ export default {
       let lng  = e.latLng.lng()
       let apiurl = `http://${process.env.VUE_APP_API_URL}/v1/is-deforested`
 
-      if (this.demoIndex < 2) {
+      if (this.demoIndex < this.demoPoints.length) {
         lat = this.demoPoints[this.demoIndex].lat
         lng = this.demoPoints[this.demoIndex].lng
         this.demoIndex++
@@ -71,14 +71,14 @@ export default {
       center: { lng: -52.5, lat: -3.5 },
       demoIndex: 0,
       demoPoints: [
-        {
+        /*{
           lat: -3.5222672296528335,
           lng: -52.60829050093891
         },
         {
           lat: -3.4803517783673135,
           lng: -52.411114610731616
-        }
+        }*/
       ],
       paths: [
         // -53,-4,-52,-3
