@@ -1,4 +1,4 @@
-# User-Query Module
+#  User-Query Module
 This is the front-end module. It's developed in VueJS 3. 
 # Instructions
 * This template is created as a template. Selected this template when creating a new repository.
