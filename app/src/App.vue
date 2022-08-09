@@ -92,6 +92,7 @@ export default {
     }
   },
   mounted() {
+                      
     this.imagePast = 'https://storage.googleapis.com/atforestry-model-tracker/frontend/placeholder-image.jpeg'
     this.imagePresent = 'https://storage.googleapis.com/atforestry-model-tracker/frontend/placeholder-image.jpeg'
   },
